@@ -14,22 +14,25 @@
 			<h3>Login</h3>
 			<div id="login-box">
 				<h4>User Login</h4>
-				<form>
+				<form action="<?php echo site_url('home/auth');?>" method="post">
 					
 				<table align="center">
 					<tr>
 						<td>Username</td>
-						<td><input type="text" placeholder="Username/Email" class="input"></td>
+						<td><input name="username" type="text" placeholder="Username/Email" class="input"></td>
 					</tr>
 					<tr>
 						<td>Password</td>
-						<td><input type="password" placeholder="Password" class="input"></td>
+						<td><input type="password" name="password" placeholder="Password" class="input"></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
 							<input type="submit" class="btn" value="Login"></td>
 					</tr>
 				</table>
+				<?php
+				echo $this->session->flashdata("msg");
+				?>
 				</form>
 			</div>
 		</div>

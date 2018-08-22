@@ -4,6 +4,12 @@ body{
 	background-color: #DDD7C4;
 	font-family: Helvetica;
 }
+.error{
+	margin: 0 !important;
+	color: red !important;
+	padding: 0 !important;
+	font-size: 12px !important;
+}
 #header{
 	height: 40px;
 	width: 100%;
@@ -23,6 +29,8 @@ body{
 	min-height: 650px;
 	height: auto;
 	width: 100%;
+	overflow: hidden;
+	padding-bottom: 10px;
 	/*background-color: black;*/
 }
 #footer{
@@ -49,6 +57,7 @@ body{
 	margin: 0 auto;
 }
 #inside-content{
+	overflow: hidden;
 	width: 800px;
 	height: auto;
 	min-height: 650px;
@@ -145,8 +154,10 @@ body{
 	border:1px solid #338EC0;
 }
 #right-content{
+	overflow: hidden;
 	float: left;
-	height: 650px;
+	min-height: 650px;
+	height: auto;
 	width: 600px;
 	/*background-color: red;*/
 }

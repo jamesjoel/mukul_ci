@@ -8,11 +8,28 @@
 <div id="header">
 	<div id="inside-header">
 		<div id="left-header">
-			<ul>
-				<li><a href="<?php echo site_url('home/login'); ?>">Login</a>|</li>
-				<li><a href="<?php echo site_url('home/signup'); ?>">Signup</a>|</li>
-				<li><a href="#">My Cart</a></li>
-			</ul>
+			<?php
+			if($this->session->userdata('user_logged_in'))
+			{ ?>
+				<ul>
+					<li><a href="<?php echo site_url('user/logout'); ?>">Logout</a>|</li>
+					<li><a href="<?php echo site_url('user'); ?>">Dash</a>|</li>
+					<li><a href="<?php echo site_url('user/profile'); ?>">Profile</a>|</li>
+					<li><a href="#">My Cart</a></li>
+				</ul>
+
+			<?php }
+			else
+			{ ?>
+
+				<ul>
+					<li><a href="<?php echo site_url('home/login'); ?>">Login</a>|</li>
+					<li><a href="<?php echo site_url('home/signup'); ?>">Signup</a>|</li>
+					<li><a href="#">My Cart</a></li>
+				</ul>
+			<?php 
+			}
+			?>
 		</div>
 	</div>
 </div>

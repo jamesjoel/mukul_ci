@@ -11,6 +11,13 @@ class Usermod extends CI_Model{
 		// INSERT 
 		$this->db->insert("user", $data);
 	}
+	function select_by_username($u)
+	{
+		//SELECT * FROM user WHERE username='$u'
+		$this->db->where('username', $u);
+		$obj=$this->db->get('user');
+		return $obj;
+	}
 }
 
 
