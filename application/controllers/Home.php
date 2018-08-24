@@ -31,9 +31,14 @@ class Home extends CI_Controller{
 		$p=$this->input->post('password');
 		$this->load->model('usermod');
 		$obj=$this->usermod->select_by_username($u);
+		// print_r($this->input->post());
+		// die;
+		// echo $obj->num_rows();die;
 		if($obj->num_rows()==1)
 		{
-			$data = $obj->row_array(); // mysqli_fetch_assoc
+			$data = $obj->row_array(); 
+			// print_r($data);die;
+			// mysqli_fetch_assoc
 			if($data['password']==md5($p))
 			{
 				$this->session->set_userdata("user_logged_in", true);
