@@ -19,11 +19,25 @@
 			// print_r($a);
 			$data = $a->row_array();
 			// print_r($data);
+			if($data['image']=="")
+			{
+				$path=base_url('images/avatar.png');
+			}
+			else
+			{	
+				$path = base_url('user_image/'.$data['image']);
+			}
 			?>
 			<table width="400" align="center">
 				<tr>
 					<td>Full Name</td>
 					<td><?php echo $data['full_name'];?></td>
+				</tr>
+				<tr>
+					<td>Image</td>
+					<td><img height="100" width="100" src="<?php echo  $path; ?>" /><br />
+						<a href="<?php echo site_url('user/change_image');?>">Change Image</a>
+					</td>
 				</tr>
 				<tr>
 					<td>Username</td>

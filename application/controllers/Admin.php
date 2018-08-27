@@ -9,6 +9,7 @@ class Admin extends CI_Controller{
 		$this->load->library('session');
 		$this->load->model("adminmod");
 		$this->load->model("usermod");
+		
 	}
 	function index()
 	{

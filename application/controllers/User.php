@@ -20,6 +20,35 @@ class User extends CI_Controller{
 		$this->load->view('header');
 		$this->load->view('dash');
 	}
+	function change_image()
+	{
+		$this->load->view('header');
+		$this->load->view('change_image');
+	}
+	function img_upload()
+	{
+		$config["upload_path"]="user_image/";
+		$config["max_size"]=2048;
+		$config["allowed_types"]="png|jpg|jpeg|gif";
+
+
+		$this->load->library("upload", $config);
+		if($this->upload->do_upload("myimage")==false)
+		{
+			$a = $this->upload->display_errors();
+			$this->session->set_flashdata("msg", $a);
+			redirect("user/change_image");
+		}
+		else
+		{
+			$name=$this->upload->data('file_name');
+			$arr['image']=$name;
+			$id=$this->session->userdata("id");
+
+			$this->usermod->update($id, $arr);
+			redirect("user/profile");
+		}
+	}
 	function profile()
 	{
 		$id= $this->session->userdata("id");
@@ -47,8 +76,10 @@ class User extends CI_Controller{
 		$data["city"] = $this->input->post("city");
 		$data["gender"] = $this->input->post("gender");
 		$data["contact"] = $this->input->post("contact");
+
 		$id = $this->session->userdata("id");
 		$this->usermod->update($id, $data);
+
 		redirect("user/profile");
 
 	}
